@@ -50,6 +50,12 @@ public class MajorRecyclerViewAdapter<M> extends RecyclerViewAdapter<M> {
     }
 
     @Override
+    public void onViewAttachedToWindow(RecyclerView.ViewHolder holder) {
+        super.onViewAttachedToWindow(holder);
+        ExcelPanel.fastScrollVertical(amountAxisY, ((RecyclerViewViewHolder) holder).recyclerView);
+    }
+
+    @Override
     public RecyclerView.ViewHolder onCreateNormalViewHolder(ViewGroup parent, int viewType) {
         RecyclerView recyclerView = new RecyclerView(context);
         LinearLayoutManager layoutManager = new LinearLayoutManager(context);
@@ -99,7 +105,7 @@ public class MajorRecyclerViewAdapter<M> extends RecyclerViewAdapter<M> {
         @Override
         public int getItemViewType(int position) {
             int viewType = super.getItemViewType(position);
-            if(viewType == TYPE_NORMAL){
+            if (viewType == TYPE_NORMAL) {
                 viewType = excelPanelListener.getCellItemViewType(position, verticalPosition);
             }
             return viewType;

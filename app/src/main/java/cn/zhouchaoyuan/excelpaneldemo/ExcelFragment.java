@@ -1,5 +1,6 @@
 package cn.zhouchaoyuan.excelpaneldemo;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -56,7 +57,7 @@ public class ExcelFragment extends Fragment implements ExcelPanel.OnLoadMoreList
         excelPanel = (ExcelPanel) root.findViewById(R.id.content_container);
         adapter = new CustomAdapter(getActivity(), blockListener);
         excelPanel.setAdapter(adapter);
-        excelPanel.setOnLoadMoreListener(this);
+//        excelPanel.setOnLoadMoreListener(this);
         initData();
         return root;
     }
@@ -89,7 +90,7 @@ public class ExcelFragment extends Fragment implements ExcelPanel.OnLoadMoreList
     @Override
     public void onLoadHistory() {
         if (!isLoading) {
-            loadData(historyStartTime, true);
+//            loadData(historyStartTime, true);
         }
     }
 
@@ -116,6 +117,7 @@ public class ExcelFragment extends Fragment implements ExcelPanel.OnLoadMoreList
         loadDataHandler.sendMessageDelayed(message, 1000);
     }
 
+    @SuppressLint("HandlerLeak")
     private Handler loadDataHandler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
@@ -146,8 +148,8 @@ public class ExcelFragment extends Fragment implements ExcelPanel.OnLoadMoreList
             }
             progress.setVisibility(View.GONE);
             adapter.setAllData(colTitles, rowTitles, cells);
-            adapter.enableFooter();
-            adapter.enableHeader();
+            adapter.disableFooter();
+            adapter.disableHeader();
         }
     };
 
