@@ -1,8 +1,9 @@
 package cn.zhouchaoyuan.excelpanel;
 
 import android.content.Context;
-import android.support.v7.widget.RecyclerView;
 import android.view.ViewGroup;
+
+import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
@@ -22,7 +23,7 @@ public class TopRecyclerViewAdapter<T> extends RecyclerViewAdapter<T> {
     @Override
     public int getItemViewType(int position) {
         int viewType = super.getItemViewType(position);
-        if(viewType == TYPE_NORMAL){
+        if (viewType == TYPE_NORMAL) {
             viewType = excelPanelListener.getTopItemViewType(position);
         }
         return viewType;

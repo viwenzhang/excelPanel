@@ -1,8 +1,9 @@
 package cn.zhouchaoyuan.excelpanel;
 
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
+
+import androidx.recyclerview.widget.RecyclerView;
 
 /**
  * Created by zhouchaoyuan on 2016/12/12.
@@ -91,7 +92,7 @@ public interface OnExcelPanelListener {
     /**
      * use to record the height of the row
      *
-     * @param holder     cell's holder
+     * @param holder   cell's holder
      * @param position horizontal or vertical position
      */
     void onAfterBind(RecyclerView.ViewHolder holder, int position);
